@@ -1,0 +1,40 @@
+body {
+	background-color:#edf1f1;
+	color: #555555;
+	font: 17px Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+	margin: 0;
+	}
+	.container {
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+	}
+	h3 {
+color: blue;
+	}
+	h2 {
+		color: blue;
+			}
+	* {text-align:center;}
+	div{background-color:none;}
+
+	#main-header {
+	background-color: #8181ff;
+	color: #fff
+	}
+	#links {
+	background-color: #e0e0eb;
+	}
+	#links a {
+	color: #808080;
+	padding-right: 17px;
+	}
+	#links li {
+	display: inline;
+	}
+	#main-footer {
+	text-align: center;
+	padding: 15px;
+	margin-top: 50px;
+	}
