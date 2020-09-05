@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendering HTML File</title>
+    <style>
+        body {
+	background-color:skyblue;
+	color: #555555;
+	font: 17px Arial, Helvetica, sans-serif;
+	line-height: 1.5em;
+	margin: 0;
+	}
+    button {
+        background-color: #DC143C;
+        border: none;
+        color:black;
+        padding: 15px 65px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+      }
+      img{
+        display: inline-block;
+      }
+      li{
+          list-style-position: center;
+          color: blue;
+          font-size: 20px;
+      }
+      ul{
+          
+          list-style:none;
+      }
+	h1 {
+    color: blue;
+	}
+	
+    * {text-align:center;}
+
+    </style>
+</head>
+<body>
+    <button id="button">Show Data</button>
+    <br>
+    <h1>List of Users</h1>
+    <div id="users"></div>
+    
+    <script>
+        document.getElementById('button').addEventListener('click', showData);
+        function showData() {
+            var req = new XMLHttpRequest();
+            req.open('GET', 'https://api.github.com/users', true);
+            req.onload = function(){
+                if(req.status==200){
+                    var users = JSON.parse(req.responseText);
+                    var display ='';
+                    for (var i in users){
+                        display += 
+                        '<div>' +
+                        '<img src="'+users[i].avatar_url+'"width="400px" height="200px">'+
+                            '<ul>' +
+                            '<li>ID:'+users[i].id+'</li>'+
+                            //'<li>NodeId:'+users[i].node_id+'</li>'+
+                            '<li>LogIn:'+users[i].login+'</li>'+
+                            //'<li>URL:'+users[i].url+'</li>'+
+                            '<li>Type:'+users[i].type+'</li>'+
+                            '</ul>'+
+                            '</div>';
+
+                    }
+                    document.getElementById('users').innerHTML=display;
+                }
+            }
+            req.send();
+        }
+    </script>
+</body>
+</html>
